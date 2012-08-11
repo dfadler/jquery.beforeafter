@@ -9,6 +9,17 @@
     <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="/javascripts/jquery.beforeafter.js" type="text/javascript"></script>
+    <script type='text/javascript'>
+      jQuery(function($){
+        if(!Modernizr.generatedcontent) {
+          $(window).bind('load', function() {
+              $(document).beforeAfter({
+                  stylesheet: 'site.css'
+              });
+          });
+        }
+      });
+    </script>
   </head>
   <body>
     <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
