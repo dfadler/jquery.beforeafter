@@ -1,28 +1,29 @@
 @charset "UTF-8";
 /* line 1, site.css.sass */
-.before, .after {
-  display: inline;
-  zoom: 1; }
+.before,
+.after {
+  zoom: 1;
+  display: inline; }
 
-/* line 5, site.css.sass */
+/* line 6, site.css.sass */
 h1 {
   color: green;
   background: black;
   padding: 20px;
   font-size: 16px; }
 
-/* line 10, site.css.sass */
+/* line 11, site.css.sass */
 h1:before, h1 > .before {
   content: ">";
   margin-right: 10px;
   color: white; }
 
-/* line 14, site.css.sass */
+/* line 15, site.css.sass */
 h1:after, h1 > .before {
   content: "_";
   color: white; }
 
-/* line 19, site.css.sass */
+/* line 20, site.css.sass */
 p {
   line-height: 32px;
   margin: 50px;
@@ -30,14 +31,15 @@ p {
   background: #eeeeee;
   padding: 20px 50px 20px 20px; }
 
-/* line 25, site.css.sass */
+/* line 26, site.css.sass */
 p:before, p > .before {
   font-family: impact;
   content: "“";
   font-size: 52px;
-  color: grey; }
+  color: grey;
+  line-height: auto; }
 
-/* line 30, site.css.sass */
+/* line 33, site.css.sass */
 p:after, p > .after {
   content: "”";
   font-family: impact;
