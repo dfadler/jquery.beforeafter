@@ -12,15 +12,13 @@
     =javascript_include_tag  "http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js", "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js", "jquery.beforeafter"
     %script{ :type => "text/javascript"}
       :plain
-        jQuery(function($){
-          if(!Modernizr.generatedcontent) {
-            $(window).bind('load', function() {
-                $(document).beforeAfter({
-                    stylesheet: 'site.css'
-                });
-            });
-          }
-        });
+        if (!Modernizr.generatedcontent || (document.all && !document.querySelector)) {
+          $(window).bind('load', function() {
+              $(document).beforeAfter({
+                  stylesheet: 'site.css'
+              });
+          });
+        }
 
   %body
     =yield
