@@ -1,4 +1,4 @@
-/*! jQuery Before After - v0.6.5 - 2012-08-17
+/*! jQuery Before After - v0.7.0 - 2012-08-17
 * https://github.com/dfadler/jquery.beforeafter
 * Copyright (c) 2012 Dustin Fadler; Licensed MIT, GPL */
 
@@ -50,50 +50,35 @@
 
     BeforeAfter.prototype.parseStylesheet = function(stylesheet) {
 
-        var stylesheets = this.config.stylesheets,
-            stylesheetsLength = stylesheets.length,
-            stylesheet = stylesheet || this.config.stylesheet,
-            pattern = this.config.pseudoPattern,
-            declarations = [],
-            contents = [],
-            declarationsLength,
-            declarationType = isLegacy ? 'selectorText' : 'cssText';
-            elements = [];
-
-        function parseRules(stylesheet) {
-            var rules, rulesLength;
-
-            rules = stylesheet.cssRules || stylesheet.rules;
-            rulesLength = rules.length;
-
-            for(var i = 0; i < rulesLength; i++) {
-                if(pattern.test(rules[i][declarationType ])) {
-
-                    contents.push(
-                        rules[i].style['content'].charAt(1)
-                        );
-
-                    declarations.push(rules[i]);
-                }
-            }
-        }
+        var that = this.parseStylesheet,
+            config = that.config = {
+                stylesheets       : this.config.stylesheets,
+                stylesheetsLength : this.config.stylesheets.length,
+                stylesheet        : stylesheet || this.config.stylesheet,
+                pattern           : this.config.pseudoPattern,
+                declarations      : [],
+                contents          : [],
+                declarationsLength: '',
+                declarationType   : isLegacy ? 'selectorText' : 'cssText',
+                elements          : []
+            };
 
         function parseDeclaration(declaration, content) {
 
             var pseudoPrefix = new RegExp(/::/),
-                pseudoClass = declaration[declarationType].match(pattern),
+                pseudoClass = declaration[config.declarationType].match(config.pattern),
                 pseudoClass = pseudoPrefix.test(pseudoClass) ? pseudoClass[0].replace('::', '') : pseudoClass[0].replace(':', ''),
                 selectors = declaration.selectorText.split(','),
                 selectorsLength = selectors.length,
                 selector, content;
             
             for(var i = 0; i < selectorsLength; i++) {
-                if( pattern.test(selectors[i]) ){
-                    selector = selectors[i].replace(pattern, '');
+                if( config.pattern.test(selectors[i]) ){
+                    selector = selectors[i].replace(config.pattern, '');
                 }
             }
 
-            elements.push({
+            config.elements.push({
                 selector: selector,
                 pseudoClass: pseudoClass,
                 content: content
@@ -102,46 +87,68 @@
 
         if(stylesheet === this.config.stylesheet) {
             
-            parseRules(stylesheet);
+            that.parseRules(stylesheet);
             
         } else {
 
-            for(var i = 0; i < stylesheetsLength; i++) {
-                parseRules(stylesheets[i]);
+            for(var i = 0; i < config.stylesheetsLength; i++) {
+                that.parseRules(config.stylesheets[i]);
             }
         }
 
-        declarationsLength = declarations.length;
+        declarationsLength = config.declarations.length;
 
         for(var i = 0; i < declarationsLength; i++) {
             
             parseDeclaration(
-                declarations[i], 
-                contents[i]
+                config.declarations[i], 
+                config.contents[i]
                 );
         }
         
-        return elements;
+        return config.elements;
 
     };
+
+    BeforeAfter.prototype.parseStylesheet.parseRules = function(stylesheet) {
+        
+        var rules, 
+            rulesLength,
+            config = this.config;
+
+            rules = stylesheet.cssRules || stylesheet.rules;
+            rulesLength = rules.length;
+
+            for(var i = 0; i < rulesLength; i++) {
+                if(config.pattern.test(rules[i][config.declarationType])) {
+
+                    config.contents.push(
+                        rules[i].style['content'].charAt(1)
+                        );
+
+                    config.declarations.push(rules[i]);
+                }
+            }
+    }
 
     BeforeAfter.prototype.addContainer = function(elements) {
 
         var elementsLength = elements.length,
             that = this.addContainer;
 
-        if(elements.length === 1 || elements.length === undefined) {
+        if(elements.length) {
             
-            that.add(elements);
-
-        } else {
-
             for(var i = 0; i < elementsLength; i++){
 
                 var element =  elements[i];
 
                 that.add(element);
             }
+
+        } else {
+
+            that.add(elements);
+
         }
 
     };
@@ -168,7 +175,6 @@
 
         var stylesheets = this.checkStylesheet(),
             declarations = this.parseStylesheet(stylesheets);
-
 
         this.addContainer(declarations);
 

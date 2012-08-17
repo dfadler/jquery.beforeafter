@@ -68,6 +68,8 @@
         ok(parsedStyles[0].pseudoClass, 'object should have pseudoClass property');
         ok(parsedStyles[0].selector, 'object should have selector property');
         ok(parsedStyles[0].content, 'object should have content property');
+
+        ok(typeof(beforeAfter.parseStylesheet.parseRules) === 'function', 'parseStylesheet.parseRules method exists');
     });
 
     module('Append Containers');
