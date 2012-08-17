@@ -76,7 +76,11 @@
 
             for(var i = 0; i < rulesLength; i++) {
                 if(pattern.test(rules[i][declarationType ])) {
-                    contents.push(rules[i].style['content'].charAt(1));
+
+                    contents.push(
+                        rules[i].style['content'].charAt(1)
+                        );
+
                     declarations.push(rules[i]);
                 }
             }
@@ -118,7 +122,11 @@
         declarationsLength = declarations.length;
 
         for(var i = 0; i < declarationsLength; i++) {
-            parseDeclaration(declarations[i], contents[i]);
+            
+            parseDeclaration(
+                declarations[i], 
+                contents[i]
+                );
         }
         
         return elements;
@@ -126,29 +134,50 @@
     };
 
     BeforeAfter.prototype.addContainer = function(elements) {
-        // Still need to add content logic
-        var elementsLength = elements.length;
-
-        function addContainer(element, pseudoClass, content) {
-
-            if(pseudoClass === 'before') {
-                $(element)
-                    .prepend('<div class="before">'+content+'</div>');
-            } else {
-               $(element)
-                    .append('<div class="after">'+content+'</div>'); 
-            }
-        }
+        
+        var elementsLength = elements.length,
+            that = this.addContainer;
 
         if(elements.length === 1 || elements.length === undefined) {
-            addContainer(elements.selector, elements.pseudoClass, elements.content);
+            
+            that.add(
+                elements.selector, 
+                elements.pseudoClass, 
+                elements.content
+                );
+
         } else {
+
             for(var i = 0; i < elementsLength; i++){
+
                 var element =  elements[i];
-                addContainer(element.selector, element.pseudoClass, element.content);
+
+                that.add(
+                    element.selector, 
+                    element.pseudoClass, 
+                    element.content
+                    );
             }
         }
 
+    };
+
+    BeforeAfter.prototype.addContainer.add = function(element, pseudoClass, content) {
+
+            if(pseudoClass === 'before') {
+                
+                $(element)
+                    .prepend(
+                        '<div class="before">'+content+'</div>'
+                        );
+
+            } else {
+               
+               $(element)
+                    .append(
+                        '<div class="after">'+content+'</div>'
+                        ); 
+            }
     };
 
     BeforeAfter.prototype.init = function() {
@@ -170,7 +199,12 @@
             var ele = window.document;
 
             if (!$.data(ele, 'plugin_' + beforeAfter)) {
-                $.data(ele, 'plugin_' + beforeAfter, new BeforeAfter(options));
+                
+                $.data(
+                    ele, 
+                    'plugin_' + beforeAfter, 
+                    new BeforeAfter(options)
+                    );
             }
         });
 

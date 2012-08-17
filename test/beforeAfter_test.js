@@ -73,6 +73,8 @@
 
     test('Adding containers to layout', function(){
         ok(typeof(beforeAfter.addContainer) === 'function', 'appendContainer method exists');
+        ok(typeof(beforeAfter.addContainer.add) === 'function', 'appendContainer.add method exists');
+        
 
         beforeAfter.addContainer({pseudoClass: 'before', selector: '#wrapper h1'});
         ok($('#wrapper h1 .before').length === 1, 'method should append container from single object');
