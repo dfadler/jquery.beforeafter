@@ -1,0 +1,40 @@
+.before,
+.after {
+zoom: 1;
+display: inline; }
+
+
+#wrapper h1 {
+color: green;
+background: black;
+padding: 20px;
+font-size: 16px; }
+
+#wrapper h1:before, #wrapper h1 > .before {
+content: ">";
+margin-right: 10px;
+color: white; }
+
+#wrapper h1:after, #wrapper h1 > .before {
+content: "_";
+color: white; }
+
+#wrapper p {
+line-height: 32px;
+margin: 50px;
+border-left: 20px solid grey;
+background: #eeeeee;
+padding: 20px 50px 20px 20px; }
+
+#wrapper p:before, #wrapper p > .before {
+font-family: impact;
+content: "“";
+font-size: 52px;
+color: grey;
+line-height: auto; }
+
+#wrapper p:after, #wrapper p > .after {
+content: "”";
+font-family: impact;
+font-size: 52px;
+color: grey; }
