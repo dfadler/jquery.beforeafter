@@ -2,7 +2,7 @@
   "name": "beforeAfter",
   "title": "jQuery Before After",
   "description": "A jQuery plugin for adding :before and :after support",
-  "version": "0.6.0",
+  "version": "0.6.5",
   "homepage": "https://github.com/dfadler/jquery.beforeafter",
   "author": {
     "name": "Dustin Fadler",
