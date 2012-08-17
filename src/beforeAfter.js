@@ -140,11 +140,7 @@
 
         if(elements.length === 1 || elements.length === undefined) {
             
-            that.add(
-                elements.selector, 
-                elements.pseudoClass, 
-                elements.content
-                );
+            that.add(elements);
 
         } else {
 
@@ -152,30 +148,26 @@
 
                 var element =  elements[i];
 
-                that.add(
-                    element.selector, 
-                    element.pseudoClass, 
-                    element.content
-                    );
+                that.add(element);
             }
         }
 
     };
 
-    BeforeAfter.prototype.addContainer.add = function(element, pseudoClass, content) {
+    BeforeAfter.prototype.addContainer.add = function(element) {
 
-            if(pseudoClass === 'before') {
+            if(element.pseudoClass === 'before') {
                 
-                $(element)
+                $(element.selector)
                     .prepend(
-                        '<div class="before">'+content+'</div>'
+                        '<div class="before">'+element.content+'</div>'
                         );
 
             } else {
                
-               $(element)
+               $(element.selector)
                     .append(
-                        '<div class="after">'+content+'</div>'
+                        '<div class="after">'+element.content+'</div>'
                         ); 
             }
     };
