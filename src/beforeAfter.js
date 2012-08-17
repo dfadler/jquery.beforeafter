@@ -71,28 +71,6 @@
                 elements          : []
             };
 
-        function parseDeclaration(declaration, content) {
-
-            var pseudoPrefix = new RegExp(/::/),
-                pseudoClass = declaration[config.declarationType].match(config.pattern),
-                pseudoClass = pseudoPrefix.test(pseudoClass) ? pseudoClass[0].replace('::', '') : pseudoClass[0].replace(':', ''),
-                selectors = declaration.selectorText.split(','),
-                selectorsLength = selectors.length,
-                selector, content;
-            
-            for(var i = 0; i < selectorsLength; i++) {
-                if( config.pattern.test(selectors[i]) ){
-                    selector = selectors[i].replace(config.pattern, '');
-                }
-            }
-
-            config.elements.push({
-                selector: selector,
-                pseudoClass: pseudoClass,
-                content: content
-            });
-        }
-
         if(stylesheet === this.config.stylesheet) {
             
             that.parseRules(stylesheet);
@@ -108,8 +86,8 @@
 
         for(var i = 0; i < declarationsLength; i++) {
             
-            parseDeclaration(
-                config.declarations[i], 
+            that.parseDeclaration(
+                config.declarations[i],
                 config.contents[i]
                 );
         }
@@ -118,26 +96,51 @@
 
     };
 
-    BeforeAfter.prototype.parseStylesheet.parseRules = function(stylesheet) {
+    BeforeAfter.prototype.parseStylesheet.parseDeclaration = function (declaration, content){
+
+            // this refers to the parent "parseStylesheet"
+        var config = this.config,
+            pseudoPrefix = new RegExp(/::/),
+            pseudoClass = declaration[config.declarationType].match(config.pattern),
+            pseudoClass = pseudoPrefix.test(pseudoClass) ? pseudoClass[0].replace('::', '') : pseudoClass[0].replace(':', ''),
+            selectors = declaration.selectorText.split(','),
+            selectorsLength = selectors.length,
+            selector, content;
+
+        for(var i = 0; i < selectorsLength; i++) {
+            if( config.pattern.test(selectors[i]) ){
+                selector = selectors[i].replace(config.pattern, '');
+            }
+        }
+
+        config.elements.push({
+            selector: selector,
+            pseudoClass: pseudoClass,
+            content: content
+        });
+    };
+
+    BeforeAfter.prototype.parseStylesheet.parseRules = function (stylesheet) {
         
-        var rules, 
-            rulesLength,
+            // Firefox uses cssRules while other browser support rules/cssRules
+        var rules = stylesheet.cssRules || stylesheet.rules,
+            rulesLength = rules.length,
+            // this refers to the parent "parseStylesheet"
             config = this.config;
 
-            rules = stylesheet.cssRules || stylesheet.rules;
-            rulesLength = rules.length;
+        for(var i = 0; i < rulesLength; i++) {
+            if(config.pattern.test(rules[i][config.declarationType])) {
 
-            for(var i = 0; i < rulesLength; i++) {
-                if(config.pattern.test(rules[i][config.declarationType])) {
+                // This will only work if the content is a single character
+                // Will need to refactor and test for longer content strings
+                config.contents.push(
+                    rules[i].style['content'].charAt(1)
+                    );
 
-                    config.contents.push(
-                        rules[i].style['content'].charAt(1)
-                        );
-
-                    config.declarations.push(rules[i]);
-                }
+                config.declarations.push(rules[i]);
             }
-    }
+        }
+    };
 
     BeforeAfter.prototype.addContainer = function(elements) {
 
@@ -175,7 +178,7 @@
                $(element.selector)
                     .append(
                         '<div class="after">'+element.content+'</div>'
-                        ); 
+                        );
             }
     };
 
@@ -199,8 +202,8 @@
             if (!$.data(ele, 'plugin_' + beforeAfter)) {
                 
                 $.data(
-                    ele, 
-                    'plugin_' + beforeAfter, 
+                    ele,
+                    'plugin_' + beforeAfter,
                     new BeforeAfter(options)
                     );
             }
