@@ -1,4 +1,4 @@
-/*! jQuery Before After - v0.6.0 - 2012-08-17
+/*! jQuery Before After - v0.6.5 - 2012-08-17
 * https://github.com/dfadler/jquery.beforeafter
 * Copyright (c) 2012 Dustin Fadler; Licensed MIT, GPL */
 
@@ -126,7 +126,7 @@
     };
 
     BeforeAfter.prototype.addContainer = function(elements) {
-        
+
         var elementsLength = elements.length,
             that = this.addContainer;
 

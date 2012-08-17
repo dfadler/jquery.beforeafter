@@ -134,7 +134,7 @@
     };
 
     BeforeAfter.prototype.addContainer = function(elements) {
-        
+
         var elementsLength = elements.length,
             that = this.addContainer;
 

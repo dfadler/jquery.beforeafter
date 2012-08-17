@@ -84,7 +84,6 @@
 
         beforeAfter.addContainer.add(elementBefore);
     
-        ok($(elementBefore.selector).length === 1, 'method should prepend container from single object')
         ok($(elementBefore.selector + ' .'+elementBefore.pseudoClass).length === 1, 'container should have class ' + elementBefore.pseudoClass);
         ok($(elementBefore.selector + ' .'+elementBefore.pseudoClass).text() === elementBefore.content, 'container should be equal to ' + elementBefore.content);
 
@@ -96,29 +95,11 @@
 
         beforeAfter.addContainer.add(elementAfter);
 
-        ok($(elementAfter.selector).length === 1, 'method should append container from single object')
         ok($(elementAfter.selector + ' .'+elementAfter.pseudoClass).length === 1, 'container should have class ' + elementAfter.pseudoClass);
         ok($(elementAfter.selector + ' .'+elementAfter.pseudoClass).text() === elementAfter.content, 'container should be equal to ' + elementAfter.content);
 
         $('#wrapper h1 .before, #wrapper h1 .after')
             .remove();
-
-        
-
-
-        // beforeAfter.addContainer({pseudoClass: 'before', selector: '#wrapper h1'});
-        // ok($('#wrapper h1 .before').length === 1, 'method should prepend before container');
-        // $('#wrapper h1 .before').remove();
-
-        // beforeAfter.addContainer({pseudoClass: 'after', selector: '#wrapper h1'});
-        // ok($('#wrapper h1 .after').length === 1, 'method should append after container');
-        // $('#wrapper h1 .after').remove();
-
-        // beforeAfter.addContainer([{pseudoClass: 'before', selector: '#wrapper h1'},{pseudoClass: 'after', selector: '#wrapper h1'}]);
-        // ok($('#wrapper h1 .before').length === 1, 'method should append container from single object');
-        // $('#wrapper h1 .before').remove();
-        // $('#wrapper h1 .after').remove();
-
 
     });
 
