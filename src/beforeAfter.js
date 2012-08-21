@@ -82,9 +82,9 @@
             }
         }
 
-        declarationsLength = config.declarations.length;
+        config.declarationsLength = config.declarations.length;
 
-        for(var i = 0; i < declarationsLength; i++) {
+        for(var i = 0; i < config.declarationsLength; i++) {
             
             that.parseDeclaration(
                 config.declarations[i],
@@ -168,17 +168,21 @@
 
             if(element.pseudoClass === 'before') {
                 
-                $(element.selector)
-                    .prepend(
-                        '<div class="before">'+element.content+'</div>'
-                        );
+                if($(element.selector + ' .before').length === 0) {
+                    $(element.selector)
+                        .prepend(
+                            '<div class="before">'+element.content+'</div>'
+                            );
+                }
+
 
             } else {
-               
-               $(element.selector)
-                    .append(
-                        '<div class="after">'+element.content+'</div>'
-                        );
+                if($(element.selector + ' .after').length === 0) {
+                   $(element.selector)
+                        .append(
+                            '<div class="after">'+element.content+'</div>'
+                            );
+                }
             }
     };
 

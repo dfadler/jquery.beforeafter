@@ -14,9 +14,13 @@ In your web page:
 <script src="jquery.js"></script>
 <script src="dist/beforeAfter.min.js"></script>
 <script>
-jQuery(function($) {
-  $.awesome(); // "awesome"
-});
+	jQuery(function($) {
+	  $(document)
+		    .beforeAfter({
+		        stylesheet: 'styles.css',
+		        legacy: false
+		    });
+	});
 </script>
 ```
 
