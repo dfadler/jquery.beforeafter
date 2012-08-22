@@ -1,6 +1,6 @@
 # jQuery Before After
 
-A jQuery plugin for adding :before and :after support
+A jQuery plugin for adding :before and :after support. While you will not get true pseudo classes you will get containers ".before & .after" that will behave exactly the same.
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
