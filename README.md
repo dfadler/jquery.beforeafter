@@ -1,6 +1,6 @@
 # jQuery Before After
 
-A jQuery plugin for adding :before and :after support. While you will not get true pseudo classes you will get containers ".before & .after" that will behave exactly the same.
+A jQuery plugin for adding :before and :after support.
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
@@ -39,6 +39,11 @@ Download the [production version][min] or the [development version][max].
 ```
 
 ## Documentation
+Add the script after your stylesheet and jQuery, then create your css with before and after pseudo class as well as the respective class preceded by a direct child selector __i.e.__ _>_.
+```css
+#wrapper h1:before, #wrapper h1 > .before
+```
+
 
 ### Supported
 * Non-ordinal pseudo selectors __i.e.__ _:before and :after_
@@ -50,8 +55,10 @@ Download the [production version][min] or the [development version][max].
 * Chained pseudo selectors __i.e.__ _:first-child:after_
 
 ## Examples
-```css
 
+### Stylesheet
+
+```css
 #wrapper h1:before, #wrapper h1 > .before {
 content: ">";
 margin-right: 10px;
@@ -75,28 +82,35 @@ font-size: 52px;
 color: grey; }
 ```
 
-```html
+__Note the class selectors on the same line as the pseudo class__
 
-<!-- Its recommended that you use Modernizer with generated in the build -->
+```css
+#wrapper h1:before, #wrapper h1 > .before
+```
+While the plugin will not add true pseudo classes you will get containers ".before & .after" that will behave exactly the same.
+
+### Document
+```html
+<!-- Its recommended that you use Modernizer with generated content in the build -->
 <script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css" />
-
-
 <div id="wrapper">
   <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
   <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="beforeAfter.js"></script>
 <script>
-  // $(document).beforeAfter();
+  // It is not essential to pass a stylesheet 
+  // but doing so may improve performance and 
+  // avoid the plugin processing css that was 
+  // not built with it in mind.
+
   $(document)
     .beforeAfter({
       stylesheet: 'styles.css'
     });
 </script>
-
 ```
 
 ## Release History
