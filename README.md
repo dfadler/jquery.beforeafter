@@ -41,16 +41,15 @@ _(OR)_
   });
 </script>
 ```
-$(document).beforeAfter();
 
 ## Documentation
 
 ### Supported
 * Non-ordinal pseudo selectors i.e. ":before() and :after()"
 
-### Usuported
+### Unsupported
 * Multiple ::before and ::after pseudo-elements using ordinals i.e. ":before(#) or :after(#)"
-* Chained psuedo selectors i.e. ":first-child:after"
+* Chained pseudo selectors i.e. ":first-child:after"
 
 ## Examples
 _(Coming soon)_
