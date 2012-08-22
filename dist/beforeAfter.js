@@ -1,4 +1,4 @@
-/*! jQuery Before After - v0.7.8 - 2012-08-21
+/*! jQuery Before After - v0.7.8 - 2012-08-22
 * https://github.com/dfadler/jquery.beforeafter
 * Copyright (c) 2012 Dustin Fadler; Licensed MIT, GPL */
 
@@ -160,21 +160,21 @@
 
             if(element.pseudoClass === 'before') {
                 
-                if($(element.selector + ' .before').length === 0) {
+                // if($(element.selector + ' .before').length === 0) {
                     $(element.selector)
                         .prepend(
                             '<div class="before">'+element.content+'</div>'
                             );
-                }
+                // }
 
 
             } else {
-                if($(element.selector + ' .after').length === 0) {
+                // if($(element.selector + ' .after').length === 0) {
                    $(element.selector)
                         .append(
                             '<div class="after">'+element.content+'</div>'
                             );
-                }
+                // }
             }
     };
 

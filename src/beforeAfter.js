@@ -168,21 +168,21 @@
 
             if(element.pseudoClass === 'before') {
                 
-                if($(element.selector + ' .before').length === 0) {
+                // if($(element.selector + ' .before').length === 0) {
                     $(element.selector)
                         .prepend(
                             '<div class="before">'+element.content+'</div>'
                             );
-                }
+                // }
 
 
             } else {
-                if($(element.selector + ' .after').length === 0) {
+                // if($(element.selector + ' .after').length === 0) {
                    $(element.selector)
                         .append(
                             '<div class="after">'+element.content+'</div>'
                             );
-                }
+                // }
             }
     };
 
