@@ -14,8 +14,7 @@
             pseudoPattern: (isLegacy || $.browser.mozilla) ? new RegExp(/:before|:after/) : new RegExp(/::before|::after/),
             stylesheets: document.styleSheets,
             stylesheetsLength: document.styleSheets.length,
-            stylesheet: undefined,
-            applyCss: false
+            stylesheet: undefined
         };
 
     function BeforeAfter(options) {
