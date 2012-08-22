@@ -8,9 +8,7 @@ Download the [production version][min] or the [development version][max].
 [min]: https://raw.github.com/dfadler/beforeAfter/master/dist/beforeAfter.min.js
 [max]: https://raw.github.com/dfadler/beforeAfter/master/dist/beforeAfter.js
 
-### In your web page:
-
-#### For parsing a single stylesheet
+### For parsing a single stylesheet
 
 ```html
 <link rel="stylesheet" type="text/css" href="styles.css" />
@@ -26,9 +24,7 @@ Download the [production version][min] or the [development version][max].
 </script>
 ```
 
-_(OR)_
-
-#### For parsing a all linked stylesheets
+### For parsing a all linked stylesheets
 
 ```html
 <link rel="stylesheet" type="text/css" href="styles-1.css" />
@@ -55,11 +51,6 @@ _(OR)_
 
 ## Examples
 ```css
-#wrapper h1 {
-color: green;
-background: black;
-padding: 20px;
-font-size: 16px; }
 
 #wrapper h1:before, #wrapper h1 > .before {
 content: ">";
@@ -69,13 +60,6 @@ color: white; }
 #wrapper h1:after, #wrapper h1 > .before {
 content: "_";
 color: white; }
-
-#wrapper p {
-line-height: 32px;
-margin: 50px;
-border-left: 20px solid grey;
-background: #eeeeee;
-padding: 20px 50px 20px 20px; }
 
 #wrapper p:before, #wrapper p > .before {
 font-family: impact;
@@ -89,6 +73,30 @@ content: "”";
 font-family: impact;
 font-size: 52px;
 color: grey; }
+```
+
+```html
+
+<!-- Its recommended that you use Modernizer with generated in the build -->
+<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css" />
+
+
+<div id="wrapper">
+  <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+  <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="beforeAfter.js"></script>
+<script>
+  // $(document).beforeAfter();
+  $(document)
+    .beforeAfter({
+      stylesheet: 'styles.css'
+    });
+</script>
+
 ```
 
 ## Release History
