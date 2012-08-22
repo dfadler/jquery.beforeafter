@@ -1,4 +1,4 @@
-/*! jQuery Before After - v0.7.8 - 2012-08-22
+/*! jQuery Before After - v0.8.5 - 2012-08-22
 * https://github.com/dfadler/jquery.beforeafter
 * Copyright (c) 2012 Dustin Fadler; Licensed MIT, GPL */
 
