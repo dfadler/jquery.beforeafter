@@ -130,6 +130,24 @@
                 $('#wrapper h1 .before, #wrapper h1 .after')
                     .remove();
 
+            var elements = [
+                    elementBefore,
+                    elementBefore,
+                    elementAfter,
+                    elementAfter
+                ],
+                elementsLen = elements.length;
+
+            for(var i = 0; i < elementsLen; i++) {
+                beforeAfter.addContainer.add(elements[i]);
+            }
+
+            elementBefore = $('#wrapper h1 > .before'),
+            elementAfter = $('#wrapper h1 > .after');
+
+            ok(!elementBefore.length > 1, 'should not have multiple containers injected for a single instance');
+            ok(!elementAfter.length > 1, 'should not have multiple containers injected for a single instance');
+
         });  
 
 }(jQuery));
