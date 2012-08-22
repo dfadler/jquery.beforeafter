@@ -40,6 +40,7 @@ _(OR)_
     $(document).beforeAfter();
   });
 </script>
+```
 
 ## Documentation
 
