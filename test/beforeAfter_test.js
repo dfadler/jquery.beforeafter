@@ -151,8 +151,6 @@
             $('#wrapper h1 .before, #wrapper h1 .after')
                 .remove();
 
-            console.log($('#wrapper h1 .before, #wrapper h1 .after'));
-            
         });  
 
 }(jQuery));

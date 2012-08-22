@@ -40,25 +40,61 @@ _(OR)_
     $(document).beforeAfter();
   });
 </script>
-```
 
 ## Documentation
 
 ### Supported
-* Non-ordinal pseudo selectors i.e. ":before() and :after()"
+* Non-ordinal pseudo selectors __i.e.__ _:before and :after_
+* Multiple and single stylesheets 
+* Single stylesheet configuration plugin option __i.e.__ _{stylesheet:'styes.css'}_
 
 ### Unsupported
-* Multiple ::before and ::after pseudo-elements using ordinals i.e. ":before(#) or :after(#)"
-* Chained pseudo selectors i.e. ":first-child:after"
+* Multiple ::before and ::after pseudo-elements using ordinals __i.e.__ _:before(#) or :after(#)_
+* Chained pseudo selectors __i.e.__ _:first-child:after_
 
 ## Examples
-_(Coming soon)_
+```css
+#wrapper h1 {
+color: green;
+background: black;
+padding: 20px;
+font-size: 16px; }
+
+#wrapper h1:before, #wrapper h1 > .before {
+content: ">";
+margin-right: 10px;
+color: white; }
+
+#wrapper h1:after, #wrapper h1 > .before {
+content: "_";
+color: white; }
+
+#wrapper p {
+line-height: 32px;
+margin: 50px;
+border-left: 20px solid grey;
+background: #eeeeee;
+padding: 20px 50px 20px 20px; }
+
+#wrapper p:before, #wrapper p > .before {
+font-family: impact;
+content: "“";
+font-size: 52px;
+color: grey;
+line-height: auto; }
+
+#wrapper p:after, #wrapper p > .after {
+content: "”";
+font-family: impact;
+font-size: 52px;
+color: grey; }
+```
 
 ## Release History
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2012 Dustin Fadler  
+Copyright (c) 2012  
 Licensed under the MIT, GPL licenses.
 
 ## Contributing
