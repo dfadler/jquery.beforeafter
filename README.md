@@ -8,24 +8,49 @@ Download the [production version][min] or the [development version][max].
 [min]: https://raw.github.com/dfadler/beforeAfter/master/dist/beforeAfter.min.js
 [max]: https://raw.github.com/dfadler/beforeAfter/master/dist/beforeAfter.js
 
-In your web page:
+### In your web page:
+
+#### For parsing a single stylesheet
 
 ```html
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <script src="jquery.js"></script>
 <script src="dist/beforeAfter.min.js"></script>
 <script>
 	jQuery(function($) {
 	  $(document)
 		    .beforeAfter({
-		        stylesheet: 'styles.css',
-		        legacy: false
+		        stylesheet: 'styles.css'
 		    });
 	});
 </script>
 ```
 
+_(OR)_
+
+#### For parsing a all linked stylesheets
+
+```html
+<link rel="stylesheet" type="text/css" href="styles-1.css" />
+<link rel="stylesheet" type="text/css" href="styles-2.css" />
+<script src="jquery.js"></script>
+<script src="dist/beforeAfter.min.js"></script>
+<script>
+  jQuery(function($) {
+    $(document).beforeAfter();
+  });
+</script>
+```
+$(document).beforeAfter();
+
 ## Documentation
-_(Coming soon)_
+
+### Supported
+* Non-ordinal pseudo selectors i.e. ":before() and :after()"
+
+### Usuported
+* Multiple ::before and ::after pseudo-elements using ordinals i.e. ":before(#) or :after(#)"
+* Chained psuedo selectors i.e. ":first-child:after"
 
 ## Examples
 _(Coming soon)_
