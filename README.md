@@ -48,7 +48,7 @@ Add the script after your stylesheet and jQuery, then create your css with befor
 ### Supported
 * Non-ordinal pseudo selectors `:before and :after`
 * Multiple and single stylesheets 
-* Single stylesheet configuration plugin option `{stylesheet:'styes.css'}`
+* Single stylesheet configuration option `{stylesheet:'styes.css'}`
 
 ### Unsupported
 * Multiple ::before and ::after pseudo-elements using ordinals `:before(#), :after(#)`
