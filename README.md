@@ -15,12 +15,12 @@ Download the [production version][min] or the [development version][max].
 <script src="jquery.js"></script>
 <script src="dist/beforeAfter.min.js"></script>
 <script>
-	jQuery(function($) {
-	  $(document)
-		    .beforeAfter({
-		        stylesheet: 'styles.css'
-		    });
-	});
+  jQuery(function($) {
+    $(document)
+      .beforeAfter({
+        stylesheet: 'styles.css'
+      });
+  });
 </script>
 ```
 
