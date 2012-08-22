@@ -127,8 +127,8 @@
 
             ok($(elementAfter.selector + ' .'+elementAfter.pseudoClass).text() === elementAfter.content, 'container should be equal to ' + elementAfter.content);
 
-                $('#wrapper h1 .before, #wrapper h1 .after')
-                    .remove();
+            $('#wrapper h1 .before, #wrapper h1 .after')
+                .remove();
 
             var elements = [
                     elementBefore,
@@ -145,9 +145,11 @@
             elementBefore = $('#wrapper h1 > .before'),
             elementAfter = $('#wrapper h1 > .after');
 
-            ok(!elementBefore.length > 1, 'should not have multiple containers injected for a single instance');
-            ok(!elementAfter.length > 1, 'should not have multiple containers injected for a single instance');
+            ok(elementBefore.length === 1, 'should not be possible to inject multiple containers for a single instance');
+            ok(elementAfter.length === 1,  'should not be possible to inject multiple containers for a single instance');
 
+            $('#wrapper h1 .before, #wrapper h1 .after')
+                .remove();
         });  
 
 }(jQuery));

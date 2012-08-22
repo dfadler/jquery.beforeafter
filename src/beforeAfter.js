@@ -166,23 +166,22 @@
 
     BeforeAfter.prototype.addContainer.add = function(element) {
 
-            if(element.pseudoClass === 'before') {
-                
-                // if($(element.selector + ' .before').length === 0) {
-                    $(element.selector)
-                        .prepend(
-                            '<div class="before">'+element.content+'</div>'
-                            );
-                // }
+            if(element.pseudoClass === 'before' && $(element.selector + ' .before').length === 0) {
 
+                $(element.selector)
+                    .prepend(
+                        '<div class="before">'+element.content+'</div>'
+                        );
+
+            } else if(element.pseudoClass === 'after' && $(element.selector + ' .after').length === 0) {
+                
+               $(element.selector)
+                    .append(
+                        '<div class="after">'+element.content+'</div>'
+                        );
 
             } else {
-                // if($(element.selector + ' .after').length === 0) {
-                   $(element.selector)
-                        .append(
-                            '<div class="after">'+element.content+'</div>'
-                            );
-                // }
+                return false;
             }
     };
 
