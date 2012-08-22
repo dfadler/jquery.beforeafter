@@ -13,7 +13,7 @@ Download the [production version][min] or the [development version][max].
 ```html
 <link rel="stylesheet" type="text/css" href="styles.css" />
 <script src="jquery.js"></script>
-<script src="dist/beforeAfter.min.js"></script>
+<script src="dist/jquery.beforeAfter.min.js"></script>
 <script>
   jQuery(function($) {
     $(document)
@@ -30,7 +30,7 @@ Download the [production version][min] or the [development version][max].
 <link rel="stylesheet" type="text/css" href="styles-1.css" />
 <link rel="stylesheet" type="text/css" href="styles-2.css" />
 <script src="jquery.js"></script>
-<script src="dist/beforeAfter.min.js"></script>
+<script src="dist/jquery.beforeAfter.min.js"></script>
 <script>
   jQuery(function($) {
     $(document).beforeAfter();
@@ -99,7 +99,7 @@ While the plugin will not add true pseudo classes you will get containers `.befo
   <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
 <script src="jquery.js"></script>
-<script src="beforeAfter.js"></script>
+<script src="jquery.beforeAfter.js"></script>
 <script>
   // It is not essential to pass a stylesheet 
   // but doing so may improve performance and 
