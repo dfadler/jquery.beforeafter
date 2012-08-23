@@ -40,19 +40,42 @@ Download the [production version][min] or the [development version][max].
 
 ## Documentation
 Add the script after your stylesheet and jQuery, then create your css with before and after pseudo class as well as the respective class preceded by a direct child selector `>`.
+
 ```css
 #wrapper h1:before, #wrapper h1 > .before
 ```
+__Currently the plugin only supports single characters values being passed through the content property__
 
+For example
+```css
+#wrapper h1:before {
+  content: '.'
+}
+#wrapper h1:after {
+  content: '...'
+}
+```
+Would yield
+
+```html
+<div id=#wrapper">
+  <div class="before">.</div>
+  <div class="after">.</div>
+</div>
+```
+
+__I'm aware of the problem and will be fixing it in future releases__
 
 ### Supported
 * Non-ordinal pseudo selectors `:before and :after`
 * Multiple and single stylesheets 
 * Single stylesheet configuration option `{stylesheet:'styes.css'}`
+* Single character `content: "."` content injection 
 
 ### Unsupported
 * Multiple ::before and ::after pseudo-elements using ordinals `:before(#), :after(#)`
 * Chained pseudo selectors `:first-child:after`
+* Multiple character `content: "..."` content injection 
 
 ## Examples
 
